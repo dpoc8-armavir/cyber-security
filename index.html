@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Սոցիալական էջի անվտանգություն</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+    body {
+        margin: 0;
+        background: #121212;
+        font-family: 'Roboto Slab', serif;
+        color: #eee;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+        text-align: center;
+        color: #00e676;
+        text-shadow: 0 0 10px #00e676, 0 0 20px #00e676;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+        max-width: 900px;
+        width: 100%;
+    }
+    .card {
+        flex: 1 1 180px;
+        max-width: 220px;
+        background: linear-gradient(145deg, #222, #111);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+        cursor: pointer;
+        user-select: none;
+        padding: 25px 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 3px solid transparent;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px #00e676;
+        border-color: #00e676;
+    }
+    .card h2 {
+        margin: 0 0 15px 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+    .facebook { background: linear-gradient(135deg, #1877F2, #0F5DC3); }
+    .instagram { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
+    .twitter { background: linear-gradient(135deg, #1DA1F2, #0D8DE8); }
+    .tiktok { background: linear-gradient(135deg, #69C9D0, #EE1D52); }
+
+    .description {
+        font-size: 0.9rem;
+        color: #bbb;
+        margin-top: 5px;
+    }
+    footer {
+        margin-top: 40px;
+        font-size: 0.8rem;
+        color: #666;
+        text-align: center;
+    }
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 2rem;
+        }
+        .card {
+            max-width: 100%;
+            flex-basis: 100%;
+        }
+    }
+</style>
+</head>
+<body>
+
+<h1>Սոցիալական էջի անվտանգություն</h1>
+
+<div class="container">
+    <div class="card facebook" onclick="open2FA('facebook')">
+        <h2>Facebook</h2>
+        <p class="description">Միացրու երկփուլանի հաստատումը՝ քո հաշվի անվտանգությունն ուժեղացնելու համար</p>
+    </div>
+    <div class="card instagram" onclick="open2FA('instagram')">
+        <h2>Instagram</h2>
+        <p class="description">Ապահովիր քո Instagram հաշիվը 2FA-ով՝ պաշտպանված լինելու համար</p>
+    </div>
+    <div class="card twitter" onclick="open2FA('twitter')">
+        <h2>Twitter</h2>
+        <p class="description">Հսկիր քո Twitter հաշվի անվտանգությունը՝ միացնելով 2FA</p>
+    </div>
+    <div class="card tiktok" onclick="open2FA('tiktok')">
+        <h2>TikTok</h2>
+        <p class="description">Միացրու 2FA՝ քո TikTok հաշվի համար ապահովություն ապահովելու համար</p>
+    </div>
+</div>
+
+<footer>
+    * Հղումները ուղղորդում են անմիջապես համապատասխան սոց․ հարթակի 2FA կարգավորումների էջին։
+</footer>
+
+<script>
+    function open2FA(platform) {
+        let url = '';
+        switch(platform) {
+            case 'facebook':
+                url = 'https://www.facebook.com/security/2fac/settings';
+                break;
+            case 'instagram':
+                url = 'https://www.instagram.com/accounts/login_security/';
+                break;
+            case 'twitter':
+                url = 'https://twitter.com/settings/security';
+                break;
+            case 'tiktok':
+                url = 'https://www.tiktok.com/security/setting';
+                break;
+            default:
+                alert('Այս հարթակը ներկայումս չի աջակցվում։');
+                return;
+        }
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
