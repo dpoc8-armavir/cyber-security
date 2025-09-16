@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Սոցիալական էջի անվտանգություն</title>
+<title>ԹՎԱՅԻՆ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
     body {
@@ -19,7 +19,7 @@
         box-sizing: border-box;
     }
     h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         margin-bottom: 30px;
         padding: 15px 30px;
         background: white;
@@ -33,6 +33,16 @@
         width: 100%;
         font-weight: 900;
         letter-spacing: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 1.8rem;
+            padding: 10px 15px;
+            letter-spacing: 1px;
+        }
     }
     .container {
         display: flex;
@@ -40,8 +50,7 @@
         gap: 25px;
         max-width: 900px;
         width: 100%;
-        flex-wrap: nowrap;
-        overflow-x: auto;
+        flex-wrap: wrap;   /* ✅ քարտերը կտեղավորվեն նոր տողում */
         padding-bottom: 10px;
     }
     .card {
@@ -166,7 +175,7 @@
 <div class="container" role="list">
     <div class="card facebook" onclick="open2FA('facebook')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('facebook')">
         <h2>Facebook</h2>
-        <p class="description">Միացրու երկփուլանի հաստատումը՝ քո հաշվի անվտանգությունն ուժեղացնելու համար</p>
+        <p class="description">Միացրու երկփուլ անվտանգությունը՝ քո հաշվի անվտանգությունն ուժեղացնելու համար</p>
     </div>
     <div class="card instagram" onclick="open2FA('instagram')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('instagram')">
         <h2>Instagram</h2>
@@ -178,13 +187,13 @@
     </div>
     <div class="card tiktok" onclick="open2FA('tiktok')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('tiktok')">
         <h2>TikTok</h2>
-        <p class="description">Միացրու 2FA՝ քո TikTok հաշվի համար ապահովություն ապահովելու համար</p>
+        <p class="description">Միացրու 2FA՝ քո TikTok հաշվի համար՝ անվտանգություն ապահովելու համար</p>
     </div>
 </div>
 
 <!-- Password Strength Checker Section -->
 <section id="password-section" aria-label="Գաղտնաբառի ուժգնության ստուգում">
-    <h3>ԳԱՂՏՆԱԲԱՌԻ ՈւԺԳՆՈՒԹՅՈՒՆԻ Ստուգում</h3>
+    <h3>ԳԱՂՏՆԱԲԱՌԻ ՎԵՐԼՈՒԾՈՒՄ</h3>
     <input type="password" id="password-input" placeholder="Մուտքագրեք գաղտնաբառը այստեղ..." aria-describedby="strength-text" />
     <div id="strength-bar" aria-hidden="true">
         <div id="strength-fill"></div>
@@ -194,11 +203,15 @@
 
 <footer>
     <p>
-        Երկփուլանի հաստատումը (2FA) ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում, ինչպես սմարթֆոնի կոդ կամ հավելված:
+        Երկփուլ անվտանգությունը (2FA)՝ ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում, ավելի ապահով դարձնելով անձնական տվյալներդ:
     </p>
     <p>
-        <a href="https://www.youtube.com/watch?v=UXc4NqvzP_Y" target="_blank" rel="noopener noreferrer">
-            Դիտել անիմացիոն ուղեցույց՝ ինչպես միացնել 2FA տարբեր սոց. հարթակներում
+        <a href="https://youtu.be/UNeuWr7z1-k?si=ssEjP8Q5AnM512Sg" target="_blank" rel="noopener noreferrer">
+           2FA  Ուղեցույց Facebook-ի համար
+        </a>
+        &nbsp;|&nbsp;
+        <a href="https://youtu.be/hc4VEh3fYqs?si=DEnPDRNIE9oyd8gG" target="_blank" rel="noopener noreferrer">
+           2FA Ուղեցույց Instagram-ի համար
         </a>
     </p>
 </footer>
@@ -248,25 +261,22 @@
         if(/[\W_]/.test(val)) score += 1;
 
         // Total possible score: 6
-
-        // Calculate percentage for bar
         const percentage = (score / 6) * 100;
         strengthFill.style.width = percentage + '%';
 
-        // Color coding
         let color = 'red';
-        let text = 'Շատ թույլ գաղտնաբառ';
+        let text = 'Շատ թույլ գաղտնաբառ է';
         if(score >= 5) {
-            color = '#00e676'; // green
+            color = '#00e676';
             text = 'Շատ ուժեղ գաղտնաբառ';
         } else if(score >= 4) {
-            color = '#ccff33'; // yellow-green
-            text = 'Բավականաչափ ուժեղ գաղտնաբառ';
+            color = '#ccff33';
+            text = 'Բավականաչափ ուժեղ գաղտնաբառ է';
         } else if(score >= 3) {
-            color = '#ffb300'; // orange
-            text = 'Միջին ուժգնություն';
+            color = '#ffb300';
+            text = 'Միջին ուժգնության գաղտնաբառ է';
         } else if(score >= 2) {
-            color = '#ff7043'; // light orange
+            color = '#ff7043';
             text = 'Թույլ է, խորհուրդ է տրվում ուժեղացնել';
         }
         strengthFill.style.backgroundColor = color;
