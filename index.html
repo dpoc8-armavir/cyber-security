@@ -179,27 +179,19 @@
 <h1>ՍՈՑԻԱԼԱԿԱՆԻ ԷՋԻ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</h1>
 
 <div class="container" role="list">
-    <div class="card facebook" role="listitem" tabindex="0"
-         onclick="open2FA('facebook')"
-         onkeypress="if(event.key==='Enter') open2FA('facebook')">
+    <div class="card facebook" onclick="open2FA('facebook')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('facebook')">
         <h2>Facebook</h2>
         <p class="description">Միացրու երկփուլ անվտանգությունը՝ քո հաշվի անվտանգությունն ուժեղացնելու համար</p>
     </div>
-    <div class="card instagram" role="listitem" tabindex="0"
-         onclick="open2FA('instagram')"
-         onkeypress="if(event.key==='Enter') open2FA('instagram')">
+    <div class="card instagram" onclick="open2FA('instagram')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('instagram')">
         <h2>Instagram</h2>
         <p class="description">Ապահովիր քո Instagram հաշիվը 2FA-ով՝ պաշտպանված լինելու համար</p>
     </div>
-    <div class="card twitter" role="listitem" tabindex="0"
-         onclick="open2FA('twitter')"
-         onkeypress="if(event.key==='Enter') open2FA('twitter')">
+    <div class="card twitter" onclick="open2FA('twitter')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('twitter')">
         <h2>Twitter</h2>
         <p class="description">Հսկիր քո Twitter հաշվի անվտանգությունը՝ միացնելով 2FA</p>
     </div>
-    <div class="card tiktok" role="listitem" tabindex="0"
-         onclick="open2FA('tiktok')"
-         onkeypress="if(event.key==='Enter') open2FA('tiktok')">
+    <div class="card tiktok" onclick="open2FA('tiktok')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('tiktok')">
         <h2>TikTok</h2>
         <p class="description">Միացրու 2FA՝ քո TikTok հաշվի համար՝ անվտանգություն ապահովելու համար</p>
     </div>
@@ -219,6 +211,15 @@
     <p>
         Երկփուլ անվտանգությունը (2FA)՝ ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում։ ԱԿՏԻՎԱՑՐՈՒ ԱՅՆ՝ անձնական տվյալների պաշտպանությունը ուժեղացնելու համար։
     </p>
+    <p>
+        <a href="https://youtu.be/UNeuWr7z1-k?si=ssEjP8Q5AnM512Sg" target="_blank" rel="noopener noreferrer">
+           2FA Ուղեցույց Facebook-ի համար
+        </a>
+        &nbsp;|&nbsp;
+        <a href="https://youtu.be/hc4VEh3fYqs?si=DEnPDRNIE9oyd8g" target="_blank" rel="noopener noreferrer">
+           2FA Ուղեցույց Instagram-ի համար
+        </a>
+    </p>
 </footer>
 
 <script>
@@ -226,19 +227,15 @@
         let url = '';
         switch(platform) {
             case 'facebook':
-                // Facebook settings main page (մուտք պահանջվում է)
                 url = 'https://www.facebook.com/settings?tab=security';
                 break;
             case 'instagram':
-                // Instagram 2FA settings
                 url = 'https://www.instagram.com/accounts/two_factor_authentication/';
                 break;
             case 'twitter':
-                // Twitter security settings
                 url = 'https://twitter.com/settings/security';
                 break;
             case 'tiktok':
-                // TikTok account security
                 url = 'https://www.tiktok.com/settings/security';
                 break;
             default:
