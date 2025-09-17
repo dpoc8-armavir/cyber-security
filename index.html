@@ -219,68 +219,31 @@
     <p>
         Երկփուլ անվտանգությունը (2FA)՝ ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում։ ԱԿՏԻՎԱՑՐՈՒ ԱՅՆ՝ անձնական տվյալների պաշտպանությունը ուժեղացնելու համար։
     </p>
-    <p>
-        <a href="https://www.facebook.com/help/148233965247823" target="_blank" rel="noopener noreferrer">
-           2FA Ուղեցույց Facebook-ի համար
-        </a>
-        &nbsp;|&nbsp;
-        <a href="https://support.tiktok.com/en/safety-hc/account-and-profile/two-step-verification" target="_blank" rel="noopener noreferrer">
-           2FA Ուղեցույց TikTok-ի համար
-        </a>
-    </p>
 </footer>
 
 <script>
-    async function open2FA(platform) {
-        // Ես օգտագործում եմ help/support հղումներ — դրանք ավելի հավանական է բացվեն ճիշտ, անգամ երբ օգտվողը չի մուտքագրված։
-        const links = {
-            facebook: 'https://www.facebook.com/help/148233965247823', // 2FA help
-            instagram: 'https://help.instagram.com/244486030561014',   // 2FA help
-            twitter: 'https://help.twitter.com/en/managing-your-account/two-factor-authentication',
-            tiktok: 'https://support.tiktok.com/en/safety-hc/account-and-profile/two-step-verification'
-        };
-
-        const url = links[platform];
-        if (!url) {
-            alert('Այս հարթակը ներկայումս չի աջակցվում։');
-            return;
+    function open2FA(platform) {
+        let url = '';
+        switch(platform) {
+            case 'facebook':
+                url = 'https://www.facebook.com/settings?tab=security&section=two_fac_auth';
+                break;
+            case 'instagram':
+                url = 'https://www.instagram.com/accounts/two_factor_authentication/';
+                break;
+            case 'twitter':
+                url = 'https://twitter.com/settings/security/two_factor_authentication';
+                break;
+            case 'tiktok':
+                url = 'https://www.tiktok.com/settings/security/two-step-verification';
+                break;
+            default:
+                alert('Այս հարթակը ներկայումս չի աջակցվում։');
+                return;
         }
-
-        try {
-            // Փորձում ենք բացել նոր պատուհանում/թաբում
-            const newWin = window.open(url, '_blank', 'noopener,noreferrer');
-            // Բացա՞վ արժանապատիվ, այլապես որոշ բրաուզերներ կարող են վերադարձնել null
-            if (!newWin) {
-                // Փորձենք պատճենել clipboard լինքը և տեղեկացնել օգտվողին
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    await navigator.clipboard.writeText(url);
-                    alert('Բրաուզերը արգելել է ավտոմատ բացումը։ Հղումը պատճենվել է clipboard-ին — տեղադրեք այն նոր թաբում (Ctrl+V)։');
-                } else {
-                    // Եթե clipboard չկա՝ ցույց ենք տալիս հղումը հաղորդագրությամբ
-                    alert('Բրաուզերը արգելել է բացումը։ Այստեղ է հղումը՝ ' + url);
-                }
-            } else {
-                // Եթե հաջողվեց նոր պատուհան/թաբ բացել, նպաստավոր է ուղղել ֆոկուսը
-                newWin.focus && newWin.focus();
-            }
-        } catch (err) {
-            console.error('open2FA սխալ:', err);
-            // նույնիսկ եթե գոյություն ունի սխալ՝ փորձենք clipboard
-            try {
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    await navigator.clipboard.writeText(url);
-                    alert('Տեղի է ունեցել խնդիր ավտոմատ բացման ժամանակ։ Հղումը պատճենվել է clipboard-ին։');
-                } else {
-                    alert('Տեղի է ունեցել խնդիր և clipboard-ը հասանելի չէ։ Հղումը՝ ' + url);
-                }
-            } catch (e) {
-                console.error('clipboard սխալ:', e);
-                alert('Սխալ է տեղի ունեցել։ Բացեք բրաուզերում այս հղումը՝ ' + url);
-            }
-        }
+        window.open(url, '_blank');
     }
 
-    // Password strength logic (առկա եք փոխված չէ)
     const passwordInput = document.getElementById('password-input');
     const strengthFill = document.getElementById('strength-fill');
     const strengthText = document.getElementById('strength-text');
