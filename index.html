@@ -226,16 +226,20 @@
         let url = '';
         switch(platform) {
             case 'facebook':
-                url = 'https://www.facebook.com/settings?tab=security&section=two_fac_auth';
+                // Facebook settings main page (մուտք պահանջվում է)
+                url = 'https://www.facebook.com/settings?tab=security';
                 break;
             case 'instagram':
+                // Instagram 2FA settings
                 url = 'https://www.instagram.com/accounts/two_factor_authentication/';
                 break;
             case 'twitter':
-                url = 'https://twitter.com/settings/security/two_factor_authentication';
+                // Twitter security settings
+                url = 'https://twitter.com/settings/security';
                 break;
             case 'tiktok':
-                url = 'https://www.tiktok.com/settings/security/two-step-verification';
+                // TikTok account security
+                url = 'https://www.tiktok.com/settings/security';
                 break;
             default:
                 alert('Այս հարթակը ներկայումս չի աջակցվում։');
