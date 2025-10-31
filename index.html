@@ -17,6 +17,7 @@
         min-height: 100vh;
         padding: 20px;
         box-sizing: border-box;
+        transition: background 0.4s ease, color 0.4s ease;
     }
     h1 {
         font-size: 2.5rem;
@@ -29,6 +30,7 @@
         border-radius: 6px;
         box-shadow: 0 0 15px rgba(255,255,255,0.5);
         user-select: none;
+        cursor: pointer;
         max-width: 900px;
         width: 100%;
         font-weight: 900;
@@ -37,13 +39,23 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    @media (max-width: 600px) {
-        h1 {
-            font-size: 1.8rem;
-            padding: 10px 15px;
-            letter-spacing: 1px;
-        }
+    .theme-btn {
+        background: #00e676;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-weight: 700;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.3s ease;
+        margin-bottom: 25px;
     }
+    .theme-btn:hover {
+        transform: scale(1.05);
+        background: #1de9b6;
+    }
+
     .container {
         display: flex;
         justify-content: center;
@@ -65,66 +77,19 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: 3px solid transparent;
         min-width: 200px;
-        outline: none;
-    }
-    .card:focus {
-        box-shadow: 0 0 18px #00e676;
-        transform: scale(1.03);
-        border-color: #00e676;
     }
     .card:hover {
         transform: scale(1.05);
         box-shadow: 0 0 20px #00e676;
         border-color: #00e676;
     }
-    .card h2 {
-        margin: 0 0 15px 0;
-        font-size: 1.8rem;
-        font-weight: 700;
-    }
+    .card h2 { margin: 0 0 15px 0; font-size: 1.8rem; font-weight: 700; }
     .facebook { background: linear-gradient(135deg, #1877F2, #0F5DC3); }
     .instagram { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
     .twitter { background: linear-gradient(135deg, #1DA1F2, #0D8DE8); }
     .tiktok { background: linear-gradient(135deg, #69C9D0, #EE1D52); }
+    .description { font-size: 0.9rem; color: #bbb; margin-top: 5px; }
 
-    .description {
-        font-size: 0.9rem;
-        color: #bbb;
-        margin-top: 5px;
-    }
-    footer {
-        margin-top: 40px;
-        max-width: 900px;
-        width: 100%;
-        text-align: center;
-        font-size: 0.8rem;
-        color: #999;
-        line-height: 1.5;
-        user-select: none;
-    }
-    footer a {
-        color: #00e676;
-        text-decoration: none;
-        font-weight: 600;
-    }
-    footer a:hover {
-        text-decoration: underline;
-    }
-
-    /* scrollbar */
-    .container::-webkit-scrollbar {
-        height: 10px;
-    }
-    .container::-webkit-scrollbar-track {
-        background: #222;
-        border-radius: 5px;
-    }
-    .container::-webkit-scrollbar-thumb {
-        background: #00e676;
-        border-radius: 5px;
-    }
-
-    /* Password Strength Section */
     #password-section {
         background: #1f1f1f;
         border-radius: 15px;
@@ -134,7 +99,6 @@
         max-width: 900px;
         width: 100%;
         color: #eee;
-        user-select: none;
     }
     #password-section h3 {
         margin-top: 0;
@@ -172,79 +136,104 @@
         font-weight: 700;
         text-align: center;
     }
+
+    footer {
+        margin-top: 50px;
+        max-width: 900px;
+        width: 100%;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #999;
+        line-height: 1.5;
+        user-select: none;
+    }
+    footer small {
+        display: block;
+        margin-top: 15px;
+        font-size: 0.75rem;
+        color: #666;
+    }
+
+    /* Լուսավոր թեմա */
+    .light-mode {
+        background: #f9f9f9;
+        color: #111;
+    }
+    .light-mode h1 {
+        background: #111;
+        color: #fff;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .light-mode #password-section {
+        background: #fff;
+        color: #111;
+    }
 </style>
 </head>
 <body>
 
-<h1>ՍՈՑԻԱԼԱԿԱՆԻ ԷՋԻ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</h1>
+<h1 onclick="resetPage()">ՍՈՑԻԱԼԱԿԱՆԻ ԷՋԻ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</h1>
 
-<div class="container" role="list">
-    <div class="card facebook" onclick="open2FA('facebook')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('facebook')">
+<button class="theme-btn" onclick="toggleTheme()">Փոխել թեմայի գույնը</button>
+
+<div class="container">
+    <div class="card facebook" onclick="open2FA('facebook')">
         <h2>Facebook</h2>
         <p class="description">Միացրու երկփուլ անվտանգությունը՝ քո հաշվի անվտանգությունն ուժեղացնելու համար</p>
     </div>
-    <div class="card instagram" onclick="open2FA('instagram')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('instagram')">
+    <div class="card instagram" onclick="open2FA('instagram')">
         <h2>Instagram</h2>
         <p class="description">Ապահովիր քո Instagram հաշիվը 2FA-ով՝ պաշտպանված լինելու համար</p>
     </div>
-    <div class="card twitter" onclick="open2FA('twitter')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('twitter')">
+    <div class="card twitter" onclick="open2FA('twitter')">
         <h2>Twitter</h2>
         <p class="description">Հսկիր քո Twitter հաշվի անվտանգությունը՝ միացնելով 2FA</p>
     </div>
-    <div class="card tiktok" onclick="open2FA('tiktok')" role="listitem" tabindex="0" onkeypress="if(event.key==='Enter') open2FA('tiktok')">
+    <div class="card tiktok" onclick="open2FA('tiktok')">
         <h2>TikTok</h2>
         <p class="description">Միացրու 2FA՝ քո TikTok հաշվի համար՝ անվտանգություն ապահովելու համար</p>
     </div>
 </div>
 
-<!-- Password Strength Checker Section -->
-<section id="password-section" aria-label="Գաղտնաբառի ուժգնության ստուգում">
+<section id="password-section">
     <h3>ԳԱՂՏՆԱԲԱՌԻ ՎԵՐԼՈՒԾՈՒՄ</h3>
-    <input type="password" id="password-input" placeholder="Մուտքագրեք գաղտնաբառը այստեղ..." aria-describedby="strength-text" />
-    <div id="strength-bar" aria-hidden="true">
-        <div id="strength-fill"></div>
-    </div>
-    <div id="strength-text" aria-live="polite"></div>
+    <input type="password" id="password-input" placeholder="Մուտքագրեք գաղտնաբառը այստեղ..." />
+    <div id="strength-bar"><div id="strength-fill"></div></div>
+    <div id="strength-text"></div>
 </section>
 
 <footer>
-    <p>
-        Երկփուլ անվտանգությունը (2FA)՝ ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում։ ԱԿՏԻՎԱՑՐՈՒ ԱՅՆ՝ անձնական տվյալների պաշտպանությունը ուժեղացնելու համար։
-    </p>
-    <p>
-        <a href="https://youtu.be/UNeuWr7z1-k?si=ssEjP8Q5AnM512Sg" target="_blank" rel="noopener noreferrer">
-           2FA Ուղեցույց Facebook-ի համար
-        </a>
-        &nbsp;|&nbsp;
-        <a href="https://youtu.be/hc4VEh3fYqs?si=DEnPDRNIE9oyd8g" target="_blank" rel="noopener noreferrer">
-           2FA Ուղեցույց Instagram-ի համար
-        </a>
-    </p>
+    <p>Երկփուլ անվտանգությունը (2FA)՝ ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում։</p>
+    <small>© 2025 նախագծային աշխատանք․ ԹՎԱՅԻՆ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</small>
 </footer>
 
 <script>
-    function open2FA(platform) {
-        let url = '';
-        switch(platform) {
-            case 'facebook':
-                url = 'https://www.facebook.com/settings?tab=security';
-                break;
-            case 'instagram':
-                url = 'https://www.instagram.com/accounts/two_factor_authentication/';
-                break;
-            case 'twitter':
-                url = 'https://twitter.com/settings/security';
-                break;
-            case 'tiktok':
-                url = 'https://www.tiktok.com/settings/security';
-                break;
-            default:
-                alert('Այս հարթակը ներկայումս չի աջակցվում։');
-                return;
-        }
-        window.open(url, '_blank');
+    // Թեմայի գույնի փոխում
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
     }
 
+    // Վերնագրի վրա սեղմելիս՝ վերականգնել էջը
+    function resetPage() {
+        document.getElementById('password-input').value = '';
+        document.getElementById('strength-fill').style.width = '0';
+        document.getElementById('strength-text').textContent = '';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.body.classList.remove('light-mode');
+    }
+
+    // 2FA հղումներ
+    function open2FA(platform) {
+        const links = {
+            facebook: 'https://www.facebook.com/settings?tab=security',
+            instagram: 'https://www.instagram.com/accounts/two_factor_authentication/',
+            twitter: 'https://twitter.com/settings/security',
+            tiktok: 'https://www.tiktok.com/settings/security'
+        };
+        if (links[platform]) window.open(links[platform], '_blank');
+    }
+
+    // Գաղտնաբառի ուժգնության ստուգում
     const passwordInput = document.getElementById('password-input');
     const strengthFill = document.getElementById('strength-fill');
     const strengthText = document.getElementById('strength-text');
@@ -252,39 +241,23 @@
     passwordInput.addEventListener('input', () => {
         const val = passwordInput.value;
         let score = 0;
-
-        if(val.length >= 8) score += 1;
-        if(val.length >= 12) score += 1;
-        if(/[a-z]/.test(val)) score += 1;
-        if(/[A-Z]/.test(val)) score += 1;
-        if(/[0-9]/.test(val)) score += 1;
-        if(/[\W_]/.test(val)) score += 1;
+        if (val.length >= 8) score++;
+        if (val.length >= 12) score++;
+        if (/[a-z]/.test(val)) score++;
+        if (/[A-Z]/.test(val)) score++;
+        if (/[0-9]/.test(val)) score++;
+        if (/[\W_]/.test(val)) score++;
 
         const percentage = (score / 6) * 100;
         strengthFill.style.width = percentage + '%';
-
-        let color = 'red';
-        let text = 'Շատ թույլ գաղտնաբառ է';
-        if(score >= 5) {
-            color = '#00e676';
-            text = 'Շատ ուժեղ գաղտնաբառ';
-        } else if(score >= 4) {
-            color = '#ccff33';
-            text = 'Բավականաչափ ուժեղ գաղտնաբառ է';
-        } else if(score >= 3) {
-            color = '#ffb300';
-            text = 'Միջին ուժգնության գաղտնաբառ է';
-        } else if(score >= 2) {
-            color = '#ff7043';
-            text = 'Թույլ է, խորհուրդ է տրվում ուժեղացնել';
-        }
+        let color = 'red', text = 'Շատ թույլ գաղտնաբառ է';
+        if (score >= 5) { color = '#00e676'; text = 'Շատ ուժեղ գաղտնաբառ'; }
+        else if (score >= 4) { color = '#ccff33'; text = 'Բավականաչափ ուժեղ է'; }
+        else if (score >= 3) { color = '#ffb300'; text = 'Միջին ուժգնություն'; }
+        else if (score >= 2) { color = '#ff7043'; text = 'Թույլ է, ուժեղացրու'; }
         strengthFill.style.backgroundColor = color;
         strengthText.textContent = text;
-
-        if(val.length === 0) {
-            strengthFill.style.width = '0';
-            strengthText.textContent = '';
-        }
+        if (!val.length) { strengthFill.style.width = '0'; strengthText.textContent = ''; }
     });
 </script>
 
