@@ -9,8 +9,10 @@
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" />
 
   <style>
+    /* Google Fonts օգտագործում ենք Roboto Slab տառատեսակ */
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 
+    /* Գլոբալ ոճեր՝ ամբողջ body-ի համար */
     body {
       margin: 0;
       background: #121212;
@@ -25,6 +27,7 @@
       transition: background 0.4s ease, color 0.4s ease;
     }
 
+    /* Վերնագիր */
     h1 {
       font-size: 2.5rem;
       margin-bottom: 30px;
@@ -35,8 +38,8 @@
       text-transform: uppercase;
       border-radius: 6px;
       box-shadow: 0 0 15px rgba(255,255,255,0.5);
-      user-select: none;
-      cursor: pointer;
+      user-select: none; /* Դադարեցնում է տեքստի ընտրությունը */
+      cursor: pointer; /* Հուշում է, որ կտտացնել կարելի է */
       max-width: 900px;
       width: 100%;
       font-weight: 900;
@@ -46,6 +49,7 @@
       text-overflow: ellipsis;
     }
 
+    /* Թեմայի փոփոխության կոճակ */
     .theme-btn {
       background: #00e676;
       color: black;
@@ -64,6 +68,7 @@
       background: #1de9b6;
     }
 
+    /* Կոնտեյներ բոլոր սոցիալական քարտերի համար */
     .container {
       display: flex;
       justify-content: center;
@@ -74,6 +79,7 @@
       padding-bottom: 10px;
     }
 
+    /* Ընդհանուր ոճ քարտերի համար */
     .card {
       flex: 0 0 220px;
       background: linear-gradient(145deg, #222, #111);
@@ -88,6 +94,7 @@
       min-width: 200px;
     }
 
+    /* Քարտի hover էֆեկտ */
     .card:hover {
       transform: scale(1.05);
       box-shadow: 0 0 20px #00e676;
@@ -100,21 +107,11 @@
       font-weight: 700;
     }
 
-    .facebook {
-      background: linear-gradient(135deg, #1877F2, #0F5DC3);
-    }
-
-    .instagram {
-      background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
-    }
-
-    .twitter {
-      background: linear-gradient(135deg, #1DA1F2, #0D8DE8);
-    }
-
-    .tiktok {
-      background: linear-gradient(135deg, #69C9D0, #EE1D52);
-    }
+    /* Սոցիալական ցանցերի գույներ */
+    .facebook { background: linear-gradient(135deg, #1877F2, #0F5DC3); }
+    .instagram { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
+    .twitter { background: linear-gradient(135deg, #1DA1F2, #0D8DE8); }
+    .tiktok { background: linear-gradient(135deg, #69C9D0, #EE1D52); }
 
     .description {
       font-size: 0.9rem;
@@ -122,6 +119,7 @@
       margin-top: 5px;
     }
 
+    /* Գաղտնաբառի ստուգման հատված */
     #password-section {
       background: #1f1f1f;
       border-radius: 15px;
@@ -174,6 +172,7 @@
       text-align: center;
     }
 
+    /* Footer ոճեր */
     footer {
       margin-top: 50px;
       max-width: 900px;
@@ -212,9 +211,14 @@
 </head>
 
 <body>
-  <h1 onclick="resetPage()">ՍՈՑԻԱԼԱԿԱՆ ԷՋԻ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</h1>
+
+  <!-- Վերնագիր (հնարավոր է սեղմել, որպեսզի մաքրվի գաղտնաբառը և վերականգնվի թեման) -->
+  <h1 onclick="resetPage()">ՍՈՑԻԱԼԱԿԱՆԻ ԷՋԻ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</h1>
+
+  <!-- Թեմայի փոփոխության կոճակ -->
   <button class="theme-btn" onclick="toggleTheme()">Փոխել թեմայի գույնը</button>
 
+  <!-- Սոցիալական ցանցերի քարտեր -->
   <div class="container">
     <div class="card facebook" onclick="open2FA('facebook')">
       <h2>Facebook</h2>
@@ -237,6 +241,7 @@
     </div>
   </div>
 
+  <!-- Գաղտնաբառի ստուգման հատված -->
   <section id="password-section">
     <h3>ԳԱՂՏՆԱԲԱՌԻ ՎԵՐԼՈՒԾՈՒՄ</h3>
     <input type="password" id="password-input" placeholder="Մուտքագրեք գաղտնաբառը այստեղ..." />
@@ -244,18 +249,19 @@
     <div id="strength-text"></div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>Երկփուլ անվտանգությունը (2FA)՝ ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում։</p>
     <small>© 2025 նախագծային աշխատանք</small>
   </footer>
 
   <script>
-    // Թեմայի գույնի փոխում
+    /* Թեմայի գույնի փոփոխություն */
     function toggleTheme() {
       document.body.classList.toggle('light-mode');
     }
 
-    // Վերնագրի վրա սեղմելիս՝ վերականգնել էջը
+    /* Վերնագրի վրա սեղմելիս՝ էջը վերականգնել */
     function resetPage() {
       document.getElementById('password-input').value = '';
       document.getElementById('strength-fill').style.width = '0';
@@ -264,7 +270,7 @@
       document.body.classList.remove('light-mode');
     }
 
-    // 2FA հղումներ
+    /* Բացել սոցիալական ցանցի 2FA էջը */
     function open2FA(platform) {
       const links = {
         facebook: 'https://www.facebook.com/settings?tab=security',
@@ -275,7 +281,7 @@
       if (links[platform]) window.open(links[platform], '_blank');
     }
 
-    // Գաղտնաբառի ուժգնության ստուգում
+    /* Գաղտնաբառի ուժգնության ստուգում */
     const passwordInput = document.getElementById('password-input');
     const strengthFill = document.getElementById('strength-fill');
     const strengthText = document.getElementById('strength-text');
@@ -284,30 +290,21 @@
       const val = passwordInput.value;
       let score = 0;
 
-      if (val.length >= 8) score++;
+      if (val.length >= 8) score++; // Ավելի երկար գաղտնաբառ = ուժեղ
       if (val.length >= 12) score++;
-      if (/[a-z]/.test(val)) score++;
-      if (/[A-Z]/.test(val)) score++;
-      if (/[0-9]/.test(val)) score++;
-      if (/[\W_]/.test(val)) score++;
+      if (/[a-z]/.test(val)) score++; // Նվագ փոքրատառ
+      if (/[A-Z]/.test(val)) score++; // Նվագ մեծատառ
+      if (/[0-9]/.test(val)) score++; // Բառանիշներ
+      if (/[\W_]/.test(val)) score++; // Համարներ կամ հատուկ նշաններ
 
       const percentage = (score / 6) * 100;
       strengthFill.style.width = percentage + '%';
 
       let color = 'red', text = 'Շատ թույլ գաղտնաբառ է';
-      if (score >= 5) {
-        color = '#00e676';
-        text = 'Շատ ուժեղ գաղտնաբառ';
-      } else if (score >= 4) {
-        color = '#ccff33';
-        text = 'Բավականաչափ ուժեղ է';
-      } else if (score >= 3) {
-        color = '#ffb300';
-        text = 'Միջին ուժգնություն';
-      } else if (score >= 2) {
-        color = '#ff7043';
-        text = 'Թույլ է, ուժեղացրու';
-      }
+      if (score >= 5) { color = '#00e676'; text = 'Շատ ուժեղ գաղտնաբառ'; }
+      else if (score >= 4) { color = '#ccff33'; text = 'Բավականաչափ ուժեղ է'; }
+      else if (score >= 3) { color = '#ffb300'; text = 'Միջին ուժգնություն'; }
+      else if (score >= 2) { color = '#ff7043'; text = 'Թույլ է, ուժեղացրու'; }
 
       strengthFill.style.backgroundColor = color;
       strengthText.textContent = text;
