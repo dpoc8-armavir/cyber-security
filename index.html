@@ -1,240 +1,278 @@
 <!DOCTYPE html>
 <html lang="hy">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ԹՎԱՅԻՆ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ԹՎԱՅԻՆ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</title>
 
-<!-- Թեմային հարմար favicon (վահանի նշան) -->
-<link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3176/3176366.png" />
+  <!-- Թեմային համապատասխան իկոնկա (փոխարինում է մոլորակին) -->
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" />
 
-<style>
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
     body {
-        margin: 0;
-        background: #121212;
-        font-family: 'Roboto Slab', serif;
-        color: #eee;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-        box-sizing: border-box;
-        transition: background 0.4s ease, color 0.4s ease;
+      margin: 0;
+      background: #121212;
+      font-family: 'Roboto Slab', serif;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: background 0.4s ease, color 0.4s ease;
     }
+
     h1 {
-        font-size: 2.5rem;
-        margin-bottom: 30px;
-        padding: 15px 30px;
-        background: white;
-        color: black;
-        text-align: center;
-        text-transform: uppercase;
-        border-radius: 6px;
-        box-shadow: 0 0 15px rgba(255,255,255,0.5);
-        user-select: none;
-        cursor: pointer;
-        max-width: 900px;
-        width: 100%;
-        font-weight: 900;
-        letter-spacing: 2px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      padding: 15px 30px;
+      background: white;
+      color: black;
+      text-align: center;
+      text-transform: uppercase;
+      border-radius: 6px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.5);
+      user-select: none;
+      cursor: pointer;
+      max-width: 900px;
+      width: 100%;
+      font-weight: 900;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
     .theme-btn {
-        background: #00e676;
-        color: black;
-        border: none;
-        padding: 10px 20px;
-        font-weight: 700;
-        font-size: 1rem;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: transform 0.2s ease, background 0.3s ease;
-        margin-bottom: 25px;
+      background: #00e676;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s ease;
+      margin-bottom: 25px;
     }
+
     .theme-btn:hover {
-        transform: scale(1.05);
-        background: #1de9b6;
+      transform: scale(1.05);
+      background: #1de9b6;
     }
 
     .container {
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-        max-width: 900px;
-        width: 100%;
-        flex-wrap: wrap;
-        padding-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      max-width: 900px;
+      width: 100%;
+      flex-wrap: wrap;
+      padding-bottom: 10px;
     }
+
     .card {
-        flex: 0 0 220px;
-        background: linear-gradient(145deg, #222, #111);
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-        cursor: pointer;
-        user-select: none;
-        padding: 25px 20px;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 3px solid transparent;
-        min-width: 200px;
+      flex: 0 0 220px;
+      background: linear-gradient(145deg, #222, #111);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+      cursor: pointer;
+      user-select: none;
+      padding: 25px 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid transparent;
+      min-width: 200px;
     }
+
     .card:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px #00e676;
-        border-color: #00e676;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00e676;
+      border-color: #00e676;
     }
-    .card h2 { margin: 0 0 15px 0; font-size: 1.8rem; font-weight: 700; }
-    .facebook { background: linear-gradient(135deg, #1877F2, #0F5DC3); }
-    .instagram { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
-    .twitter { background: linear-gradient(135deg, #1DA1F2, #0D8DE8); }
-    .tiktok { background: linear-gradient(135deg, #69C9D0, #EE1D52); }
-    .description { font-size: 0.9rem; color: #bbb; margin-top: 5px; }
+
+    .card h2 {
+      margin: 0 0 15px 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .facebook {
+      background: linear-gradient(135deg, #1877F2, #0F5DC3);
+    }
+
+    .instagram {
+      background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
+    }
+
+    .twitter {
+      background: linear-gradient(135deg, #1DA1F2, #0D8DE8);
+    }
+
+    .tiktok {
+      background: linear-gradient(135deg, #69C9D0, #EE1D52);
+    }
+
+    .description {
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-top: 5px;
+    }
 
     #password-section {
-        background: #1f1f1f;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-        padding: 25px 30px;
-        margin-top: 40px;
-        max-width: 900px;
-        width: 100%;
-        color: #eee;
+      background: #1f1f1f;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+      padding: 25px 30px;
+      margin-top: 40px;
+      max-width: 900px;
+      width: 100%;
+      color: #eee;
     }
+
     #password-section h3 {
-        margin-top: 0;
-        font-size: 2rem;
-        color: #00e676;
-        text-align: center;
+      margin-top: 0;
+      font-size: 2rem;
+      color: #00e676;
+      text-align: center;
     }
+
     #password-section input[type="password"] {
-        width: 100%;
-        padding: 12px 15px;
-        font-size: 1rem;
-        border-radius: 8px;
-        border: none;
-        margin-top: 15px;
-        outline: none;
-        box-sizing: border-box;
-        background: #333;
-        color: #eee;
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      margin-top: 15px;
+      outline: none;
+      box-sizing: border-box;
+      background: #333;
+      color: #eee;
     }
+
     #strength-bar {
-        height: 15px;
-        border-radius: 8px;
-        background: #444;
-        margin-top: 15px;
-        overflow: hidden;
+      height: 15px;
+      border-radius: 8px;
+      background: #444;
+      margin-top: 15px;
+      overflow: hidden;
     }
+
     #strength-fill {
-        height: 100%;
-        width: 0;
-        background: red;
-        transition: width 0.4s ease, background-color 0.4s ease;
+      height: 100%;
+      width: 0;
+      background: red;
+      transition: width 0.4s ease, background-color 0.4s ease;
     }
+
     #strength-text {
-        margin-top: 10px;
-        font-weight: 700;
-        text-align: center;
+      margin-top: 10px;
+      font-weight: 700;
+      text-align: center;
     }
 
     footer {
-        margin-top: 50px;
-        max-width: 900px;
-        width: 100%;
-        text-align: center;
-        font-size: 0.8rem;
-        color: #999;
-        line-height: 1.5;
-        user-select: none;
+      margin-top: 50px;
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #999;
+      line-height: 1.5;
+      user-select: none;
     }
+
     footer small {
-        display: block;
-        margin-top: 15px;
-        font-size: 0.75rem;
-        color: #666;
+      display: block;
+      margin-top: 15px;
+      font-size: 0.75rem;
+      color: #666;
     }
 
     /* Լուսավոր թեմա */
     .light-mode {
-        background: #f9f9f9;
-        color: #111;
+      background: #f9f9f9;
+      color: #111;
     }
+
     .light-mode h1 {
-        background: #111;
-        color: #fff;
-        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      background: #111;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
+
     .light-mode #password-section {
-        background: #fff;
-        color: #111;
+      background: #fff;
+      color: #111;
     }
-</style>
+  </style>
 </head>
+
 <body>
+  <h1 onclick="resetPage()">ՍՈՑԻԱԼԱԿԱՆ ԷՋԻ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</h1>
+  <button class="theme-btn" onclick="toggleTheme()">Փոխել թեմայի գույնը</button>
 
-<h1 onclick="resetPage()">ՍՈՑԻԱԼԱԿԱՆ ԷՋԻ ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</h1>
-
-<button class="theme-btn" onclick="toggleTheme()">Փոխել թեմայի գույնը</button>
-
-<div class="container">
+  <div class="container">
     <div class="card facebook" onclick="open2FA('facebook')">
-        <h2>Facebook</h2>
-        <p class="description">Միացրու երկփուլ անվտանգությունը՝ քո հաշվի անվտանգությունն ուժեղացնելու համար</p>
+      <h2>Facebook</h2>
+      <p class="description">Միացրու երկփուլ անվտանգությունը՝ քո հաշվի անվտանգությունն ուժեղացնելու համար</p>
     </div>
-    <div class="card instagram" onclick="open2FA('instagram')">
-        <h2>Instagram</h2>
-        <p class="description">Ապահովիր քո Instagram հաշիվը 2FA-ով՝ պաշտպանված լինելու համար</p>
-    </div>
-    <div class="card twitter" onclick="open2FA('twitter')">
-        <h2>Twitter</h2>
-        <p class="description">Հսկիր քո Twitter հաշվի անվտանգությունը՝ միացնելով 2FA</p>
-    </div>
-    <div class="card tiktok" onclick="open2FA('tiktok')">
-        <h2>TikTok</h2>
-        <p class="description">Միացրու 2FA՝ քո TikTok հաշվի համար՝ անվտանգություն ապահովելու համար</p>
-    </div>
-</div>
 
-<section id="password-section">
+    <div class="card instagram" onclick="open2FA('instagram')">
+      <h2>Instagram</h2>
+      <p class="description">Ապահովիր քո Instagram հաշիվը 2FA-ով՝ պաշտպանված լինելու համար</p>
+    </div>
+
+    <div class="card twitter" onclick="open2FA('twitter')">
+      <h2>Twitter</h2>
+      <p class="description">Հսկիր քո Twitter հաշվի անվտանգությունը՝ միացնելով 2FA</p>
+    </div>
+
+    <div class="card tiktok" onclick="open2FA('tiktok')">
+      <h2>TikTok</h2>
+      <p class="description">Միացրու 2FA՝ քո TikTok հաշվի համար՝ անվտանգություն ապահովելու համար</p>
+    </div>
+  </div>
+
+  <section id="password-section">
     <h3>ԳԱՂՏՆԱԲԱՌԻ ՎԵՐԼՈՒԾՈՒՄ</h3>
     <input type="password" id="password-input" placeholder="Մուտքագրեք գաղտնաբառը այստեղ..." />
     <div id="strength-bar"><div id="strength-fill"></div></div>
     <div id="strength-text"></div>
-</section>
+  </section>
 
-<footer>
+  <footer>
     <p>Երկփուլ անվտանգությունը (2FA)՝ ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում։</p>
     <small>© 2025 նախագծային աշխատանք</small>
-</footer>
+  </footer>
 
-<script>
+  <script>
     // Թեմայի գույնի փոխում
     function toggleTheme() {
-        document.body.classList.toggle('light-mode');
+      document.body.classList.toggle('light-mode');
     }
 
     // Վերնագրի վրա սեղմելիս՝ վերականգնել էջը
     function resetPage() {
-        document.getElementById('password-input').value = '';
-        document.getElementById('strength-fill').style.width = '0';
-        document.getElementById('strength-text').textContent = '';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        document.body.classList.remove('light-mode');
+      document.getElementById('password-input').value = '';
+      document.getElementById('strength-fill').style.width = '0';
+      document.getElementById('strength-text').textContent = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.body.classList.remove('light-mode');
     }
 
     // 2FA հղումներ
     function open2FA(platform) {
-        const links = {
-            facebook: 'https://www.facebook.com/settings?tab=security',
-            instagram: 'https://www.instagram.com/accounts/two_factor_authentication/',
-            twitter: 'https://twitter.com/settings/security',
-            tiktok: 'https://www.tiktok.com/settings/security'
-        };
-        if (links[platform]) window.open(links[platform], '_blank');
+      const links = {
+        facebook: 'https://www.facebook.com/settings?tab=security',
+        instagram: 'https://www.instagram.com/accounts/two_factor_authentication/',
+        twitter: 'https://twitter.com/settings/security',
+        tiktok: 'https://www.tiktok.com/settings/security'
+      };
+      if (links[platform]) window.open(links[platform], '_blank');
     }
 
     // Գաղտնաբառի ուժգնության ստուգում
@@ -243,27 +281,42 @@
     const strengthText = document.getElementById('strength-text');
 
     passwordInput.addEventListener('input', () => {
-        const val = passwordInput.value;
-        let score = 0;
-        if (val.length >= 8) score++;
-        if (val.length >= 12) score++;
-        if (/[a-z]/.test(val)) score++;
-        if (/[A-Z]/.test(val)) score++;
-        if (/[0-9]/.test(val)) score++;
-        if (/[\W_]/.test(val)) score++;
+      const val = passwordInput.value;
+      let score = 0;
 
-        const percentage = (score / 6) * 100;
-        strengthFill.style.width = percentage + '%';
-        let color = 'red', text = 'Շատ թույլ գաղտնաբառ է';
-        if (score >= 5) { color = '#00e676'; text = 'Շատ ուժեղ գաղտնաբառ'; }
-        else if (score >= 4) { color = '#ccff33'; text = 'Բավականաչափ ուժեղ է'; }
-        else if (score >= 3) { color = '#ffb300'; text = 'Միջին ուժգնություն'; }
-        else if (score >= 2) { color = '#ff7043'; text = 'Թույլ է, ուժեղացրու'; }
-        strengthFill.style.backgroundColor = color;
-        strengthText.textContent = text;
-        if (!val.length) { strengthFill.style.width = '0'; strengthText.textContent = ''; }
+      if (val.length >= 8) score++;
+      if (val.length >= 12) score++;
+      if (/[a-z]/.test(val)) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[\W_]/.test(val)) score++;
+
+      const percentage = (score / 6) * 100;
+      strengthFill.style.width = percentage + '%';
+
+      let color = 'red', text = 'Շատ թույլ գաղտնաբառ է';
+      if (score >= 5) {
+        color = '#00e676';
+        text = 'Շատ ուժեղ գաղտնաբառ';
+      } else if (score >= 4) {
+        color = '#ccff33';
+        text = 'Բավականաչափ ուժեղ է';
+      } else if (score >= 3) {
+        color = '#ffb300';
+        text = 'Միջին ուժգնություն';
+      } else if (score >= 2) {
+        color = '#ff7043';
+        text = 'Թույլ է, ուժեղացրու';
+      }
+
+      strengthFill.style.backgroundColor = color;
+      strengthText.textContent = text;
+
+      if (!val.length) {
+        strengthFill.style.width = '0';
+        strengthText.textContent = '';
+      }
     });
-</script>
-
+  </script>
 </body>
 </html>
