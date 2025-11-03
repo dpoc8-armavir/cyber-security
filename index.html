@@ -175,25 +175,33 @@
       color: #666;
     }
 
-    /* Ներքևի ուղեցույցների հատված */
-    .guides {
+    /* Ուղեցույցների նոր հատվածը */
+    #guides-section h3 {
+      text-align: center;
+      color: #00e676;
+      margin-bottom: 15px;
+    }
+
+    .guide-item {
       display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 25px;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
-    .guide-link img {
-      width: 45px;
-      height: 45px;
-      transition: transform 0.3s ease, filter 0.3s ease;
-      border-radius: 50%;
+    .guide-item img {
+      width: 25px;
+      height: 25px;
     }
 
-    .guide-link:hover img {
-      transform: scale(1.15);
-      filter: brightness(1.3);
+    .guide-item a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 600;
     }
+
+    .guide-item a.facebook-link { color: #1877F2; }
+    .guide-item a.instagram-link { color: #DD2A7B; }
 
     .light-mode {
       background: #f9f9f9;
@@ -247,76 +255,14 @@
     <div id="strength-text"></div>
   </section>
 
-  <footer>
-    <p>Երկփուլ անվտանգությունը (2FA)՝ ավելացնում է անվտանգության լրացուցիչ շերտ՝ պահանջելով մուտքի ժամանակ երկրորդ հաստատում։</p>
-    <small>© 2025 նախագծային աշխատանք</small>
-  </footer>
+  <!-- Ուղեցույցների նոր հատվածը գաղտնաբառի վերլուծությունից հետո -->
+  <section id="guides-section">
+    <h3>Ուղեցույցներ սոցիալական ցանցերի համար</h3>
 
-  <!-- Ուղեցույցների բաժին -->
-  <div class="guides">
-    <a class="guide-link" href="https://www.youtube.com/watch?v=UNeuWr7z1-k&ab_channel=AntaresMediaHolding" target="_blank" title="Facebook 2FA ուղեցույց (վիդեո)">
+    <div class="guide-item">
       <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-    </a>
-    <a class="guide-link" href="https://www.youtube.com/watch?v=hc4VEh3fYqs&ab_channel=AntaresMediaHolding" target="_blank" title="Instagram 2FA ուղեցույց (վիդեո)">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-    </a>
-  </div>
+      <a href="https://www.youtube.com/watch?v=UNeuWr7z1-k&ab_channel=AntaresMediaHolding" target="_blank" class="facebook-link">Ուղեցույց Facebook-ի համար</a>
+    </div>
 
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('light-mode');
-    }
-
-    function resetPage() {
-      document.getElementById('password-input').value = '';
-      document.getElementById('strength-fill').style.width = '0';
-      document.getElementById('strength-text').textContent = '';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      document.body.classList.remove('light-mode');
-    }
-
-    function open2FA(platform) {
-      const links = {
-        facebook: 'https://www.facebook.com/settings?tab=security',
-        instagram: 'https://www.instagram.com/accounts/two_factor_authentication/',
-        twitter: 'https://twitter.com/settings/security',
-        tiktok: 'https://www.tiktok.com/settings/security'
-      };
-      if (links[platform]) window.open(links[platform], '_blank');
-    }
-
-    const passwordInput = document.getElementById('password-input');
-    const strengthFill = document.getElementById('strength-fill');
-    const strengthText = document.getElementById('strength-text');
-
-    passwordInput.addEventListener('input', () => {
-      const val = passwordInput.value;
-      let score = 0;
-
-      if (val.length >= 8) score++;
-      if (val.length >= 12) score++;
-      if (/[a-z]/.test(val)) score++;
-      if (/[A-Z]/.test(val)) score++;
-      if (/[0-9]/.test(val)) score++;
-      if (/[\W_]/.test(val)) score++;
-
-      const percentage = (score / 6) * 100;
-      strengthFill.style.width = percentage + '%';
-
-      let color = 'red', text = 'Շատ թույլ գաղտնաբառ է';
-      if (score >= 5) { color = '#00e676'; text = 'Շատ ուժեղ գաղտնաբառ'; }
-      else if (score >= 4) { color = '#ccff33'; text = 'Բավականաչափ ուժեղ է'; }
-      else if (score >= 3) { color = '#ffb300'; text = 'Միջին ուժգնություն'; }
-      else if (score >= 2) { color = '#ff7043'; text = 'Թույլ է, ուժեղացրու'; }
-
-      strengthFill.style.backgroundColor = color;
-      strengthText.textContent = text;
-
-      if (!val.length) {
-        strengthFill.style.width = '0';
-        strengthText.textContent = '';
-      }
-    });
-  </script>
-</body>
-</html>
+    <div class="guide-item">
+      <img src="https://cdn-icons-png.fl
